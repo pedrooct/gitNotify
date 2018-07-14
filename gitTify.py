@@ -16,7 +16,7 @@ def notify(str,rep):
     pynotify.init("gitTify")
     notice = pynotify.Notification(rep, str)
     notice.show()
-    time.sleep(3)
+    time.sleep(5)
     notice.close()
     return
 
@@ -29,10 +29,11 @@ def getFeed(rep,branch):
             entry=root.find('{http://www.w3.org/2005/Atom}entry')
             id = entry.find('{http://www.w3.org/2005/Atom}id').text
             title = entry.find('{http://www.w3.org/2005/Atom}title').text
-            time = entry.find('{http://www.w3.org/2005/Atom}updated').text
+            timeUpdate = entry.find('{http://www.w3.org/2005/Atom}updated').text
             name = entry.find('{http://www.w3.org/2005/Atom}author')
             name = name.find('{http://www.w3.org/2005/Atom}name').text
-            if time != getLastUpdate(rep):
+            time.sleep(50)
+            if timeUpdate != getLastUpdate(rep):
                 str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+time
                 notify(str,rep)
 
