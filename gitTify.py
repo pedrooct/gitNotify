@@ -34,7 +34,7 @@ def getFeed(rep,branch):
             name = name.find('{http://www.w3.org/2005/Atom}name').text
             time.sleep(50)
             if timeUpdate != getLastUpdate(rep):
-                str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+time
+                str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+timeUpdate
                 notify(str,rep)
 
     file.close()
