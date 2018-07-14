@@ -5,14 +5,12 @@ import thread
 import threading
 import time
 import sys
-import re
 import pynotify
-import json
 import urllib2
 import xml.etree.ElementTree as ET
 
-
-lastReadUpdate = ""
+#Array Global de controlo de Hora de update para cada thread
+lastReadUpdate = []
 
 
 def notify(str,rep):
@@ -23,7 +21,7 @@ def notify(str,rep):
     notice.close()
     return
 
-def getFeed(rep,branch):
+def getFeed(rep,branch,idx):
     rep=rep+"/commits/"+branch+".atom"
     while 1:
             file = urllib2.urlopen(rep)
@@ -36,8 +34,8 @@ def getFeed(rep,branch):
             name = entry.find('{http://www.w3.org/2005/Atom}author')
             name = name.find('{http://www.w3.org/2005/Atom}name').text
             global lastReadUpdate
-            if lastReadUpdate!=timeUpdate:
-                lastReadUpdate=timeUpdate
+            if lastReadUpdate[idx]!=timeUpdate:
+                lastReadUpdate[idx]=timeUpdate
                 if timeUpdate == getLastUpdate(rep):
                     str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+timeUpdate
                     notify(str,rep)
@@ -61,9 +59,14 @@ def getLastUpdate(rep):
 def main(argv):
     rep=argv[1];
     sizearg=len(argv)
+    global lastReadUpdate
+    lastReadUpdate.append("")
+    lastReadUpdate.append("")
     try:
         for  x in range(2,sizearg):
-             thread.start_new_thread( getFeed, (rep, argv[x]))
+            lastReadUpdate.append("")
+            thread.start_new_thread( getFeed, (rep,argv[x],x))
+
     except:
         print "Error: unable to start thread"
 
