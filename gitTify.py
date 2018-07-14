@@ -12,6 +12,9 @@ import urllib2
 import xml.etree.ElementTree as ET
 
 
+lastReadUpdate = ""
+
+
 def notify(str,rep):
     pynotify.init("gitTify")
     notice = pynotify.Notification(rep, str)
@@ -32,11 +35,19 @@ def getFeed(rep,branch):
             timeUpdate = entry.find('{http://www.w3.org/2005/Atom}updated').text
             name = entry.find('{http://www.w3.org/2005/Atom}author')
             name = name.find('{http://www.w3.org/2005/Atom}name').text
-            time.sleep(50)
-            if timeUpdate != getLastUpdate(rep):
-                str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+timeUpdate
-                notify(str,rep)
+            global lastReadUpdate
+            if lastReadUpdate!=timeUpdate:
+                lastReadUpdate=timeUpdate
+                if timeUpdate == getLastUpdate(rep):
+                    str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+timeUpdate
+                    notify(str,rep)
+                    time.sleep(200)
+                else:
+                    time.sleep(50)
+            else:
+                time.sleep(100)
             file.close()
+
 
 
 def getLastUpdate(rep):
