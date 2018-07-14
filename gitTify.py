@@ -22,10 +22,10 @@ def notify(str,rep):
 
 def getFeed(rep,branch):
     rep=rep+"/commits/"+branch+".atom"
-    file = urllib2.urlopen(rep)
-    data = file.read()
-    root = ET.fromstring(data)
     while 1:
+            file = urllib2.urlopen(rep)
+            data = file.read()
+            root = ET.fromstring(data)
             entry=root.find('{http://www.w3.org/2005/Atom}entry')
             id = entry.find('{http://www.w3.org/2005/Atom}id').text
             title = entry.find('{http://www.w3.org/2005/Atom}title').text
@@ -36,8 +36,8 @@ def getFeed(rep,branch):
             if timeUpdate != getLastUpdate(rep):
                 str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+timeUpdate
                 notify(str,rep)
+            file.close()
 
-    file.close()
 
 def getLastUpdate(rep):
     file = urllib2.urlopen(rep)
