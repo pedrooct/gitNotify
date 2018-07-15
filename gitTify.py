@@ -8,12 +8,19 @@ import sys
 import pynotify
 import urllib2
 import xml.etree.ElementTree as ET
+from win10toast import ToastNotifier #pip install win10toast
+
 
 #Array Global de controlo de Hora de update para cada thread
 lastReadUpdate = []
 
 
-def notify(str,rep):
+def notifyWindows(str,rep):
+    toaster.show_toast(rep,str, icon_path=None,duration=5,threaded=True)
+    # Wait for threaded notification to finish
+    while toaster.notification_active(): time.sleep(0.1)
+
+def notifyLinux(str,rep):
     pynotify.init("gitTify")
     notice = pynotify.Notification(rep, str)
     notice.show()
@@ -38,7 +45,10 @@ def getFeed(rep,branch,idx):
                 lastReadUpdate[idx]=timeUpdate
                 if timeUpdate == getLastUpdate(rep):
                     str ="New Commit on "+branch+ " - from: "+name +";\nTitle:"+title+";\nID:"+id+"; \nTime:"+timeUpdate
-                    notify(str,rep)
+                    if sys.platform.startswith('linux'):
+                        notifyLinux(str,rep)
+                    elif sys.platform.startswith('win'):
+                        notifyWindows(str,rep)
                     time.sleep(200)
                 else:
                     time.sleep(50)
