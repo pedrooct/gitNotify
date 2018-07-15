@@ -27,4 +27,4 @@ Example:  python gitTify.py https://github.com/pedrooct/gitNotify master (other 
 ## Next update
 - Optimization of CPU usage!  
 
-Develop by : Pedrooct  
+Developed by : Pedrooct  
