@@ -2,21 +2,21 @@
 Simple python app that allows github repository notifications in your desktop  
 With this app you can follow commit branches.  
 
-#Supports
+## Supports
 - One repository per app  
 - Multiple branches from the repository  
 - Thread support  
 - Notifications by pynotify 
 
-#Dependencies
+## Dependencies
 
 To use this app you need :  
 - Python 2.7  
 - pynotify  
-- import urllib2  
-- import xml.etree.ElementTree as ET  
+- urllib2  
+- xml.etree.ElementTree as ET  
   
-#Instalation/how to
+## Instalation/how to
 
 - Clone the project  
 - Get the URL from the repository you want to follow(browser URL)  
@@ -24,7 +24,7 @@ To use this app you need :
 
 Example:  python gitTify.py https://github.com/pedrooct/gitNotify master (other branches can be added) !  
 
-#Next update
-- Optimization of CPU usages!  
+## Next update
+- Optimization of CPU usage!  
 
 Develop by : Pedrooct  
