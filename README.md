@@ -15,6 +15,7 @@ To use this app you need :
 - pynotify  
 - urllib2  
 - xml.etree.ElementTree as ET  
+- windows 10 toast ( https://github.com/jithurjacob/Windows-10-Toast-Notifications )
   
 ## Instalation/how to
 
