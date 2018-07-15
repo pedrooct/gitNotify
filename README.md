@@ -6,7 +6,7 @@ With this app you can follow commit branches.
 - One repository per app  
 - Multiple branches from the repository  
 - Thread support  
-- Notifications by pynotify 
+- Notifications by pynotify and windows 10 toast
 
 ## Dependencies
 
