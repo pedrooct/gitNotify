@@ -13,6 +13,12 @@ import xml.etree.ElementTree as ET
 #Array Global de controlo de Hora de update para cada thread
 lastReadUpdate = []
 
+def defineSleep(time):
+    if time > 300:
+        return "1"
+    elif time/2 > 300:
+        return time+5
+    return time*2
 
 '''
 Esta função vai notificar o utilizador do commit!
@@ -32,6 +38,7 @@ hora do ultimo update ! Se necessitar de update notifica o utilizador
 '''
 def getFeed(rep,branch,idx):
     rep=rep+"/commits/"+branch+".atom"
+    timer=1
     while 1:
             try:
                 file = urllib2.urlopen(rep)
@@ -49,11 +56,13 @@ def getFeed(rep,branch,idx):
                     if timeUpdate == getLastUpdate(rep):
                         str ="New Commit on "+branch+ " - from: "+name +";\nTitle: "+title+";\nID: "+id+"; \nTime: "+timeUpdate
                         notifyLinux(str,rep)
-                        time.sleep(30)
+                        time.sleep(timer)
                     else:
-                        time.sleep(60)
+                        timer=defineSleep(timer)
+                        time.sleep(timer)
                 else:
-                    time.sleep(200)
+                    timer=defineSleep(timer)
+                    time.sleep(timer)
                 file.close()
             except:
                 print "Erro : Ocorreu um erro feche a aplicação !!"
