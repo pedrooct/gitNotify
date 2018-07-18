@@ -54,7 +54,7 @@ def getFeed(rep,branch,idx):
                     if timeUpdate == getLastUpdate(rep):
                         str ="New Commit on "+branch+ " - from: "+name +";\nTitle: "+title+";\nID: "+id+"; \nTime: "+timeUpdate
                         notifyWindows(str,rep)
-                        time.sleep(30)
+                        timer=1
                         time.sleep(timer)
                     else:
                         timer=defineSleep(timer)
