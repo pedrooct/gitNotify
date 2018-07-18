@@ -15,7 +15,7 @@ lastReadUpdate = []
 
 def defineSleep(time):
     if time > 300:
-        return "1"
+        return 1
     elif time/2 > 300:
         return time+5
     return time*2
