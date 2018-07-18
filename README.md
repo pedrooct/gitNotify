@@ -11,7 +11,7 @@ With this app you can follow commit branches.
 ## Dependencies
 
 To use this app you need :  
-- Python 2.7  
+- Python 2.7 (Linux)
 - pynotify  
 - urllib2  
 - xml.etree.ElementTree as ET  
@@ -26,6 +26,7 @@ To use this app you need :
 Example:  python gitTify.py https://github.com/pedrooct/gitNotify master (other branches can be added) !  
 
 ## Next update
-- Optimization of CPU usage!  
+- Optimization of CPU usage!  done!
+- Grafical Interface !
 
 Developed by : Pedrooct  
