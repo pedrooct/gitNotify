@@ -16,17 +16,21 @@ To use this app you need :
 - urllib2  
 - xml.etree.ElementTree as ET  
 - windows 10 toast ( https://github.com/jithurjacob/Windows-10-Toast-Notifications )
+- easyGUI
   
 ## Instalation/how to
 
 - Clone the project  
 - Get the URL from the repository you want to follow(browser URL)  
 - Get the branches names you want to follow as well   
+- python run.py
 
-Example:  python gitTify.py https://github.com/pedrooct/gitNotify master (other branches can be added) !  
+Example(without user interface):  python gitTify.py https://github.com/pedrooct/gitNotify master (other branches can be added) !  
 
 ## Next update
 - Optimization of CPU usage!  done!
-- Grafical Interface !
+- Grafical Interface ! small user interface... NEEDS to be updated
+- More branches in the future !
+- create full app
 
 Developed by : Pedrooct  
