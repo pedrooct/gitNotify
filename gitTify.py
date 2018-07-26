@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 #Imports necessários !
 import time
 import sys

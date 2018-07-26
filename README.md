@@ -21,7 +21,7 @@ To use this app you need :
 
 - Clone the project  
 - Get the URL from the repository you want to follow(browser URL)  
-- Get the branches names you want to follow as well  
+- Get the branches names you want to follow as well   
 
 Example:  python gitTify.py https://github.com/pedrooct/gitNotify master (other branches can be added) !  
 
