@@ -11,8 +11,8 @@ With this app you can follow commit branches.
 ## Dependencies
 
 To use this app you need :  
-- Python 2.7 (Linux)
-- pynotify  
+- Python 2.7 
+- pynotify  (Linux)
 - urllib2  
 - xml.etree.ElementTree as ET  
 - windows 10 toast ( https://github.com/jithurjacob/Windows-10-Toast-Notifications )
