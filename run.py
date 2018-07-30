@@ -22,6 +22,12 @@ def prepareArray(arr):
         return False
     return aux
 
+def prepareString(arr):
+    noSpace=[]
+    for  x in range (0, len(arr)):
+        noSpace.append(arr[x].replace(" ",""))
+    return noSpace
+
 #Função serve para testar URL do github com os repetivos ramos
 def testData(arg):
     for x in range(1, len(arg)):
@@ -44,15 +50,16 @@ def prepareCommand(fieldValues):
 def main():
     start=1
     while start!=0:
-        msg = "Enter your personal information"
+        msg = "Enter the Github URL and the branches you want to follow "
         title = "gitNotify"
-        fieldNames = ["GitHub URL","Branch:","Branch:","Branch:"]
+        fieldNames = ["GitHub URL:","Branch:","Branch:","Branch:"]
         fieldValues = []  # we start with blanks for the values
         fieldValues = multenterbox(msg,title, fieldNames)
         fieldValues=prepareArray(fieldValues)
         if fieldValues == False :
             msgbox("OOOPS! something went wrong ! Did you forget something ??", ok_button="OK!")
         else:
+            fieldValues=prepareString(fieldValues)
             if testData(fieldValues):
                 command=prepareCommand(fieldValues)
                 msgbox("Program is now running on the background ! you will see the first pop now !", ok_button="OK!")
